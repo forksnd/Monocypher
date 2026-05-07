@@ -393,6 +393,7 @@ void crypto_sha512_hkdf_expand(u8       *okm,  size_t okm_size,
 		okm_size -= out_size;
 		ctr++;
 	}
+	WIPE_BUFFER(blk);
 }
 
 void crypto_sha512_hkdf(u8       *okm , size_t okm_size,
@@ -406,6 +407,8 @@ void crypto_sha512_hkdf(u8       *okm , size_t okm_size,
 
 	// Expand
 	crypto_sha512_hkdf_expand(okm, okm_size, prk, sizeof(prk), info, info_size);
+
+	WIPE_BUFFER(prk);
 }
 
 ///////////////
