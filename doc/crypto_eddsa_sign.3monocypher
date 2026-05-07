@@ -127,6 +127,12 @@ and
 provide EdDSA public key signatures and verification.
 .Fn crypto_eddsa_key_pair
 computes the private and public keys from a random seed.
+They use BLAKE2b as the underlying hash,
+which allows monocypher to be more compact,
+but is not compatible with Ed25519.
+If you need Ed25519 compatibility, use
+.Xr crypto_ed25519_sign 3monocypher
+instead.
 The arguments are:
 .Bl -tag -width Ds
 .It Fa seed
